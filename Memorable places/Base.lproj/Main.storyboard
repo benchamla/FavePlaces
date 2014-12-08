@@ -27,7 +27,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
                                     <navigationItem title="Ben's Map" id="evd-My-nbp">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="W0X-qj-HVi"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="W0X-qj-HVi">
+                                            <connections>
+                                                <segue destination="x5K-IO-c7V" kind="show" identifier="back" id="aUa-WS-DJx"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Find me" id="mdA-69-fLm">
                                             <connections>
                                                 <action selector="findMePressed:" destination="vXZ-lx-hvc" id="Moh-5X-y6F"/>
@@ -36,6 +40,31 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Wf-nS-FZq">
+                                <rect key="frame" x="16" y="233" width="288" height="101"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="1Bg-zC-xyG">
+                                    <rect key="frame" x="0.0" y="0.0" width="288" height="101"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vXY-kj-1LU">
+                                            <rect key="frame" x="37" y="43" width="214" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="vXZ-lx-hvc" id="U8Q-01-vCM"/>
+                                            </connections>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name of the place" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAO-Dq-Nc0">
+                                            <rect key="frame" x="74" y="14" width="141" height="21"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -50,11 +79,14 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="EffectAddView" destination="1Wf-nS-FZq" id="Hmo-c1-xru"/>
+                        <outlet property="NewNamePlace" destination="vXY-kj-1LU" id="q1O-dh-RSD"/>
                         <outlet property="myMap" destination="6Dk-8y-A4C" id="w2o-GY-KBs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="162" y="170"/>
         </scene>
         <!--My Places-->
         <scene sceneID="ed4-yI-1uI">
@@ -78,7 +110,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Places" id="BpR-6n-m8U">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bRU-vQ-KPq"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bRU-vQ-KPq">
+                            <connections>
+                                <segue destination="vXZ-lx-hvc" kind="show" identifier="addPlace" id="igw-dj-JH8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -109,4 +145,7 @@
             <point key="canvasLocation" x="616" y="149"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="igw-dj-JH8"/>
+    </inferredMetricsTieBreakers>
 </document>

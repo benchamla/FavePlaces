@@ -40,5 +40,7 @@
 	<string>To Save your location I need to know it ;)</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>To keep track </string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

@@ -29,8 +29,9 @@ class TableViewController: UITableViewController {
             places.removeAtIndex(0)
         }
         
+        if places.count == 0 {
         places.append(["name":"Western Wall, Jerusalem", "lat":"31.776901","lon":"35.234519"])
-        
+        }
         
     }
 
@@ -55,20 +56,31 @@ class TableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+      
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
         // Configure the cell...
         
-        cell.textLabel.text = places[indexPath.row]["name"]
+        cell.textLabel!.text = places[indexPath.row]["name"]
         
         return cell
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+         self.navigationController?.navigationBarHidden = true
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "addPlace" {
+            activePlace = -1
+        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         activePlace = indexPath.row
         
-        self.navigationController?.navigationBarHidden = true
+       
         self.performSegueWithIdentifier("findPlace", sender: indexPath)
     }
 
